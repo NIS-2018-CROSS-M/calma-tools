@@ -94,17 +94,17 @@ class MLUtil:
     @staticmethod
     def _initialize_data(train_src, train_tgt, valid_src, valid_tgt, prepared_training_data_prefix):
         prepr_params = f"-train_src {train_src} -train_tgt {train_tgt} -valid_src {valid_src} -valid_tgt {valid_tgt} -save_data {prepared_training_data_prefix}"
-        get_ipython().system(f'{sys.executable} ~/OpenNMT-py/preprocess.py {prepr_params}')
+        get_ipython().system(f'/usr/bin/python3 ~/OpenNMT-py/preprocess.py {prepr_params}')
 
     @staticmethod
     def _train_ml(train_params):
         train_params = " ".join(train_params)
-        get_ipython().system(f'{sys.executable} ~/OpenNMT-py/train.py {train_params}')
+        get_ipython().system(f'/usr/bin/python3 ~/OpenNMT-py/train.py {train_params}')
 
     @staticmethod
     def _generate_predictions(generation_params, output_filename):
         generation_params = " ".join(generation_params)
-        get_ipython().system(f'{sys.executable} ~/OpenNMT-py/translate.py {generation_params} > {output_filename}')
+        get_ipython().system(f'/usr/bin/python3 ~/OpenNMT-py/translate.py {generation_params} > {output_filename}')
 
     @staticmethod
     def _choose_best_predictions(nbest_filename, covered_filename, output_filename):
@@ -112,7 +112,7 @@ class MLUtil:
             f'cat {nbest_filename}',
             '| grep -v -P "^\\s+"',
             '| grep -v -P "^\\+"',
-            '{sys.executable} scripts/get-analyses.py 0.8 3' + f'{covered_filename} > {output_filename}'
+            '/usr/bin/python3 scripts/get-analyses.py 0.8 3' + f'{covered_filename} > {output_filename}'
         ]))
 
     @staticmethod

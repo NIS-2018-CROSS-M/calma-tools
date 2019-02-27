@@ -110,8 +110,8 @@ class MLUtil:
     def _choose_best_predictions(nbest_filename, covered_filename, output_filename):
         get_ipython().system(' | '.join([
             f'cat {nbest_filename}',
-            '| grep -v -P "^\\s+"',
-            '| grep -v -P "^\\+"',
+            'grep -v -P "^\\s+"',
+            'grep -v -P "^\\+"',
             '/usr/bin/python3 scripts/get-analyses.py 0.8 3' + f'{covered_filename} > {output_filename}'
         ]))
 

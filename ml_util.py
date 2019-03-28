@@ -109,8 +109,7 @@ class MLUtil:
         generation_params = " ".join(generation_params)
         get_ipython().system(f'/usr/bin/python3 ~/OpenNMT-py/translate.py {generation_params} > {output_filename}')
 
-    @staticmethod
-    def _choose_best_predictions(nbest_filename, covered_filename, output_filename):
+    def _choose_best_predictions(self, nbest_filename, covered_filename, output_filename):
         get_ipython().system(' | '.join([
             f'cat {nbest_filename}',
             'grep -v -P "^\\s+"',

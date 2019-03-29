@@ -114,7 +114,7 @@ class MLUtil:
             f'cat {nbest_filename}',
             'grep -v -P "^\\s+"',
             'grep -v -P "^\\+"',
-            '/usr/bin/python3 scripts/get-analyses.py' + f'{self.lower_bound} {self.num}' + ' ' + f'{covered_filename} > {output_filename}'
+            '/usr/bin/python3 scripts/get-analyses.py' + ' ' + f'{self.lower_bound} {self.num}' + ' ' + f'{covered_filename} > {output_filename}'
         ]))
 
     @staticmethod
